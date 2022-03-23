@@ -1,0 +1,50 @@
+main {
+  width: 100%;
+  height: 100%;
+  padding: 0 14px;
+}
+.assentos {
+  height: 203px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.assento {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 26px;
+  height: 26px;
+  background: #c3cfd9;
+  border: 1px solid #808f9d;
+  box-sizing: border-box;
+  border-radius: 12px;
+  flex-shrink: 0;
+  margin-left: 7px;
+}
+.details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+}
+.assento.detail {
+    margin: 0 37px;
+}
+.assento.detail h3 {
+    position: relative;
+    bottom: -30px;
+}
+.assento.detail.selecionado {
+    background:#8DD7CF;
+}
+.assento.detail.disponivel {
+    background: #C3CFD9;
+}
+.assento.detail.indisponivel {
+    background: #FBE192;
+}
