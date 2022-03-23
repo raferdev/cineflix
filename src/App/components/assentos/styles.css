@@ -1,14 +1,15 @@
-main {
+.main-assentos {
   width: 100%;
   height: 100%;
   padding: 0 14px;
 }
 .assentos {
-  height: 203px;
+  box-sizing: content-box;
+  min-height: 203px;
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -23,28 +24,81 @@ main {
   box-sizing: border-box;
   border-radius: 12px;
   flex-shrink: 0;
-  margin-left: 7px;
+  margin: 9px;
 }
 .details {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  margin-bottom: 40px;
 }
 .assento.detail {
-    margin: 0 37px;
+  margin: 0 37px;
 }
 .assento.detail h3 {
-    position: relative;
-    bottom: -30px;
+  position: relative;
+  bottom: -30px;
 }
 .assento.detail.selecionado {
-    background:#8DD7CF;
+  background: #8dd7cf;
 }
 .assento.detail.disponivel {
-    background: #C3CFD9;
+  background: #c3cfd9;
 }
 .assento.detail.indisponivel {
-    background: #FBE192;
+  background: #fbe192;
+}
+.nome,
+.cpf {
+  width: 100%;
+  height: 76px;
+  margin-bottom: 7px;
+}
+.nome h3,
+.cpf h3 {
+  font-size: 18px;
+  line-height: 21px;
+  color: #293845;
+}
+.nome input,
+.cpf input {
+  font-family: "Roboto";
+  width: 100%;
+  height: 51px;
+  font-style: italic;
+  font-size: 18px;
+  line-height: 21px;
+  color: #afafaf;
+  padding-left: 18px;
+}
+.sec-reservar {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: 160px;
+}
+.reservar {
+  height: 42px;
+  width: 225px;
+  background-color: #e8833a;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.reservar h3 {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.04em;
+  color: #ffffff;
 }
