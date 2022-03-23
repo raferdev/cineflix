@@ -1,26 +1,24 @@
 import imgtest from "../../../assets/images/imagetest.png";
+import { Link } from "react-router-dom";
 import "./styles.css"
 function Home() {
     return (
         <main>
-            <article className="posters-board"><img className="poster" src={imgtest}></img></article>
-            <article className="posters-board"><img className="poster" src={imgtest}></img></article>
-            <article className="posters-board"><img className="poster" src={imgtest}></img></article>
-            <article className="posters-board"><img className="poster" src={imgtest}></img></article><article className="posters-board"><img className="poster" src={imgtest}></img></article>
-            <article className="posters-board"><img className="poster" src={imgtest}></img></article>
-            <article className="posters-board"><img className="poster" src={imgtest}></img></article>
-            <article className="posters-board"><img className="poster" src={imgtest}></img></article>
-            <article className="posters-board"><img className="poster" src={imgtest}></img></article>
-            <article className="posters-board"><img className="poster" src={imgtest}></img></article>
-            <article className="posters-board"><img className="poster" src={imgtest}></img></article>
-            <article className="posters-board"><img className="poster" src={imgtest}></img></article>
-            <article className="posters-board"><img className="poster" src={imgtest}></img></article>
-            <article className="posters-board"><img className="poster" src={imgtest}></img></article>
-            <article className="posters-board"><img className="poster" src={imgtest}></img></article>
-            <article className="posters-board"><img className="poster" src={imgtest}></img></article>
-            <article className="posters-board"><img className="poster" src={imgtest}></img></article>
-            <article className="posters-board"><img className="poster" src={imgtest}></img></article>
-
+            <article className="posters-board"><Link to="/sessao"><img className="poster" src={imgtest}></img></Link></article>
+            <article className="posters-board"><Link to="/sessao"><img className="poster" src={imgtest}></img></Link></article>
+            <article className="posters-board"><Link to="/sessao"><img className="poster" src={imgtest}></img></Link></article>
+            <article className="posters-board"><Link to="/sessao"><img className="poster" src={imgtest}></img></Link></article>
+            <article className="posters-board"><Link to="/sessao"><img className="poster" src={imgtest}></img></Link></article>
+            <article className="posters-board"><Link to="/sessao"><img className="poster" src={imgtest}></img></Link></article>
+            <article className="posters-board"><Link to="/sessao"><img className="poster" src={imgtest}></img></Link></article>
+            <article className="posters-board"><Link to="/sessao"><img className="poster" src={imgtest}></img></Link></article>
+            <article className="posters-board"><Link to="/sessao"><img className="poster" src={imgtest}></img></Link></article>
+            <article className="posters-board"><Link to="/sessao"><img className="poster" src={imgtest}></img></Link></article>
+            <article className="posters-board"><Link to="/sessao"><img className="poster" src={imgtest}></img></Link></article>
+            <article className="posters-board"><Link to="/sessao"><img className="poster" src={imgtest}></img></Link></article>
+            <article className="posters-board"><Link to="/sessao"><img className="poster" src={imgtest}></img></Link></article>
+            <article className="posters-board"><Link to="/sessao"><img className="poster" src={imgtest}></img></Link></article>
+            <article className="posters-board"><Link to="/sessao"><img className="poster" src={imgtest}></img></Link></article>
         </main>
     )
 }
