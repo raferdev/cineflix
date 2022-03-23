@@ -1,0 +1,23 @@
+header,.sub-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header {
+  height: 67px;
+  background-color: #c3cfd9;
+}
+header h1 {
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 40px;
+  color: #e8833a;
+}
+.sub-header {
+  height: 110px;
+}
+.sub-header h2 {
+  font-size: 24px;
+  line-height: 28px;
+  color: #293845;
+}
