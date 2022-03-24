@@ -26,6 +26,9 @@
   flex-shrink: 0;
   margin: 9px;
 }
+.assento.selecionado {
+  background: #8dd7cf;
+}
 .details {
   display: flex;
   justify-content: center;
