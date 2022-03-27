@@ -17,16 +17,16 @@ function Sessao() {
 
   return (
     <main className="main-sessao">
-      {sessoes.map((sessao) => {
+      {sessoes.map((sessao,index) => {
         return (
-          <article className="data-card">
+          <article key={index} className="data-card">
             <h3>
               {sessao.weekday} - {sessao.date}
             </h3>
             <section className="horarios">
-              {sessao.showtimes.map((times) => {
+              {sessao.showtimes.map((times,index) => {
                 return (
-                  <Link to={`/assentos/${times.id}`}>
+                  <Link key={index} to={`/assentos/${times.id}`}>
                     <button className="horario">
                       <h4>{times.name}</h4>
                     </button>

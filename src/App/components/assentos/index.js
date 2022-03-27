@@ -1,66 +1,137 @@
-import "./styles.css";
 import Footer from "../footer";
-import axios from "axios";
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import styled from "styled-components";
+import { RenderizaAssentos } from "./assentos";
 function Assentos() {
   return (
-    <main className="main-assentos">
+    <Main>
       <RenderizaAssentos />
-      <section className="details">
-        <div className="assento detail selecionado">
+      <SectionDetails>
+        <AssentoDetailSelecionado>
           <h3>Selecionado</h3>
-        </div>
-        <div className="assento detail disponivel">
+        </AssentoDetailSelecionado>
+        <AssentoDetailDisponivel>
           <h3>Disponível</h3>
-        </div>
-        <div className="assento detail indisponivel">
+        </AssentoDetailDisponivel>
+        <AssentoDetailIndisponivel>
           <h3>Indisponível</h3>
-        </div>
-      </section>
-      <section className="nome">
+        </AssentoDetailIndisponivel>
+      </SectionDetails>
+      <InputNome>
         <h3>Nome do comprador:</h3>
         <input type="text" placeholder="Digite seu nome..."></input>
-      </section>
-      <section className="cpf">
+      </InputNome>
+      <InputCPF>
         <h3>CPF do comprador:</h3>
         <input type="text" placeholder="Digite seu CPF..."></input>
-      </section>
-      <section className="sec-reservar">
+      </InputCPF>
+      <SectionReservar>
         <button className="reservar">
           <h3>Reservar assento(s)</h3>
         </button>
-      </section>
+      </SectionReservar>
       <Footer />
-    </main>
+    </Main>
   );
 }
-function RenderizaAssentos() {
-  const { idSessao } = useParams();
-  const [assentos, setAssentos] = useState([]);
-  const [selecionado, setSelecionado] = useState(false);
-  useEffect(() => {
-    const promise = axios.get(
-      `https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`
-    );
-    promise.then((response) => {
-      const assentosData = response.data;
-      setAssentos(assentosData.seats);
-    });
-  }, []);
-  return (
-    <section className="assentos">
-      {assentos.map((seat) => {
-        return (
-          <button
-            onClick={() => setSelecionado(()=> selecionado ? false : true)}
-            className={selecionado ? "assento selecionado" : "assento"}
-          >
-            <h3>{seat.name}</h3>
-          </button>
-        );
-      })}
-    </section>
-  );
-}
+
+const AssentoDetailSelecionado = styled.div`
+  background: #8dd7cf;
+  margin: 0 37px;
+`;
+const AssentoDetailDisponivel = styled.div`
+  background: #c3cfd9;
+  margin: 0 37px;
+`;
+const AssentoDetailIndisponivel = styled.div`
+  background: #fbe192;
+  margin: 0 37px;
+`;
+const Main = styled.main`
+  width: 100%;
+  height: 100%;
+  padding: 0 14px;
+`;
+const SectionDetails = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  margin-bottom: 40px;
+  & h3 {
+    position: relative;
+    bottom: -30px;
+  }
+`;
+const InputNome = styled.section`
+  width: 100%;
+  height: 76px;
+  margin-bottom: 7px;
+  & h3 {
+    font-size: 18px;
+    line-height: 21px;
+    color: #293845;
+  }
+  & input {
+    font-family: "Roboto";
+    width: 100%;
+    height: 51px;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 21px;
+    color: #afafaf;
+    padding-left: 18px;
+  }
+`;
+const InputCPF = styled.section`
+  width: 100%;
+  height: 76px;
+  margin-bottom: 7px;
+  & h3 {
+    font-size: 18px;
+    line-height: 21px;
+    color: #293845;
+  }
+  & input {
+    font-family: "Roboto";
+    width: 100%;
+    height: 51px;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 21px;
+    color: #afafaf;
+    padding-left: 18px;
+  }
+`;
+
+const SectionReservar = styled.section`
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: 160px;
+  & button {
+    height: 42px;
+    width: 225px;
+    background-color: #e8833a;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  & h3 {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.04em;
+    color: #ffffff;
+  }
+`;
+
 export default Assentos;
