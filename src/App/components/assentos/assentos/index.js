@@ -3,22 +3,23 @@ import AssentoFunction from "../seats";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-export function RenderizaAssentos() {
+export function RenderizaAssentos(props) {
+  const {setAssentos} = props
   const { idSessao } = useParams();
-  const [assentos, setAssentos] = useState([]);
+  const [renderizaAssentos, setRenderizaAssentos] = useState([]);
   useEffect(() => {
     const promise = axios.get(
       `https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`
     );
     promise.then((response) => {
       const assentosData = response.data;
-      setAssentos(assentosData.seats);
+      setRenderizaAssentos(assentosData.seats);
     });
   }, []);
   return (
     <SectionAssentos>
-      {assentos.map((props, index) => (
-        <AssentoFunction seat={props} key={index} />
+      {renderizaAssentos.map((props, index) => (
+        <AssentoFunction seat={props} key={index} setAssentos={setAssentos} />
       ))}
     </SectionAssentos>
   );

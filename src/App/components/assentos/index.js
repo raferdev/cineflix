@@ -1,10 +1,23 @@
 import Footer from "../footer";
+import { useState } from "react";
 import styled from "styled-components";
 import { RenderizaAssentos } from "./assentos";
 function Assentos() {
+  const [assentos,setAssentos] = useState([])
+  const [nome, setNome] = useState("")
+  const [cpf, setCpf] = useState(0)
+  function enviarDados(event) {
+    event.preventDefault()
+    console.log ({
+      assentos:assentos,
+      nome:nome,
+      cpf:cpf
+    })
+  }
   return (
     <Main>
-      <RenderizaAssentos />
+      <form onSubmit={enviarDados}>
+      <RenderizaAssentos setAssentos={setAssentos} assentos={assentos}/>
       <SectionDetails>
         <AssentoDetailSelecionado>
           <h3>Selecionado</h3>
@@ -18,17 +31,18 @@ function Assentos() {
       </SectionDetails>
       <InputNome>
         <h3>Nome do comprador:</h3>
-        <input type="text" placeholder="Digite seu nome..."></input>
+        <input  type="text" placeholder="Digite seu nome..." onChange={e => setNome(e.target.value)} required></input>
       </InputNome>
       <InputCPF>
         <h3>CPF do comprador:</h3>
-        <input type="text" placeholder="Digite seu CPF..."></input>
+        <input  type="text" placeholder="Digite seu CPF..." onChange={e => setCpf(e.target.value)} required></input>
       </InputCPF>
       <SectionReservar>
-        <button className="reservar">
+        <button className="reservar" type="submit">
           <h3>Reservar assento(s)</h3>
         </button>
       </SectionReservar>
+      </form>
       <Footer />
     </Main>
   );
@@ -37,14 +51,29 @@ function Assentos() {
 const AssentoDetailSelecionado = styled.div`
   background: #8dd7cf;
   margin: 0 37px;
+  border-radius: 50px;
+  width: 26px;
+  height: 26px;
+  display:flex;
+  justify-content:center;
 `;
 const AssentoDetailDisponivel = styled.div`
   background: #c3cfd9;
   margin: 0 37px;
+  border-radius: 50px;
+  width: 26px;
+  height: 26px;
+  display:flex;
+  justify-content:center;
 `;
 const AssentoDetailIndisponivel = styled.div`
   background: #fbe192;
   margin: 0 37px;
+  border-radius: 50px;
+  width: 26px;
+  height: 26px;
+  display:flex;
+  justify-content:center;
 `;
 const Main = styled.main`
   width: 100%;
