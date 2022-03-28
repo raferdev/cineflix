@@ -55,6 +55,10 @@ function Assentos(props) {
       }
     }
   return (
+    <>
+    <SectionSubHeader>
+        <h2>Selecione o horário</h2>
+      </SectionSubHeader>
     <Main>
       <form onSubmit={validaDados}>
       <SectionAssentos>
@@ -89,8 +93,20 @@ function Assentos(props) {
       </form>
       <Footer titulo={titulo} hora={hora} dia={dia} poster={poster}/>
     </Main>
+    </>
   );
 }
+const SectionSubHeader = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 110px;
+  & h2 {
+    font-size: 24px;
+    line-height: 28px;
+    color: #293845;
+  }
+  `
 const SectionAssentos = styled.section`
   box-sizing: content-box;
   min-height: 203px;

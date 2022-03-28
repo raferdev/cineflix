@@ -22,7 +22,7 @@
   line-height: 23px;
 }
 .horarios {
-    display: flex;
+  display: flex;
 }
 .horario {
   display: flex;
@@ -36,4 +36,10 @@
 }
 .horario h4 {
   color: #ffff;
+  text-decoration: none important!;
+  border: 0important!;
+}
+h4 {
+  text-decoration: none important!;
+  border: 0 important!;
 }
