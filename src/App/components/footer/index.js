@@ -4,7 +4,7 @@ function Footer(props) {
   return (
     <footer>
       <article className="mini-poster-board">
-        <img className="mini-poster" src={poster}></img>
+        <img className="mini-poster" src={poster} alt="poster-filme"></img>
       </article>
       <section className="info-filme">
         <h3>{titulo}</h3>

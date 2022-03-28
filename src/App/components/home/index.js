@@ -3,8 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import styled from "styled-components"
 import "./styles.css";
-function Home(props) {
-  const {setData} = props
+function Home() {
   const [poster, setPoster] = useState([]);
   useEffect(() => {
     const promise = axios.get(
@@ -22,9 +21,9 @@ function Home(props) {
     <main className="main-home">
       {poster.map((filme, index) => {
         return (
-        <Link to={"/sessao/" + filme.id}>
-          <article className="posters-board" key={index}>
-              <img className="poster" src={filme.posterURL}></img>
+        <Link key={index} to={"/sessao/" + filme.id}>
+          <article className="posters-board">
+              <img className="poster" src={filme.posterURL} alt={filme.overview}></img>
           </article>
           </Link>
         );
