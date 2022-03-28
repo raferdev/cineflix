@@ -24,6 +24,9 @@
 .horarios {
   display: flex;
 }
+.horarios a {
+  text-decoration: none;
+}
 .horario {
   display: flex;
   justify-content: center;
