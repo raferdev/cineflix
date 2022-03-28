@@ -3,15 +3,23 @@ import Footer from "../footer";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
-function Sessao() {
+function Sessao(props) {
+  const [titulo,setTitulo] = useState("")
+  const {data,setData} = props
   const [sessoes, setSessao] = useState([]);
   const { idFilme } = useParams();
+  const [poster, setPoster] = useState("")
   useEffect(() => {
     const promise = axios.get(
       `https://mock-api.driven.com.br/api/v5/cineflex/movies/${idFilme}/showtimes`
     );
     promise.then((response) => {
+      const nome = response.data.title;
+      const poster = response.data.posterURL;
+      setPoster(poster)
+      setTitulo(nome);
       setSessao(response.data.days);
+      setData({...data,filme:nome});
     });
   }, []);
 
@@ -37,7 +45,7 @@ function Sessao() {
           </article>
         );
       })}
-      <Footer />
+      <Footer titulo={titulo} dia="" hora="" poster={poster}/>
     </main>
   );
 }

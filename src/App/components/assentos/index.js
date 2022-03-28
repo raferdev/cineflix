@@ -1,23 +1,67 @@
 import Footer from "../footer";
-import { useState } from "react";
 import styled from "styled-components";
-import { RenderizaAssentos } from "./assentos";
-function Assentos() {
-  const [assentos,setAssentos] = useState([])
-  const [nome, setNome] = useState("")
-  const [cpf, setCpf] = useState(0)
-  function enviarDados(event) {
+import axios from "axios";
+import AssentoFunction from "./seats";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+function Assentos(props) {
+  const navigate = useNavigate()
+  const [hora, setHora] = useState();
+  const [dia, setDia] = useState();
+  const [titulo, setTitulo] = useState();
+  const [numeros, setNumeros] = useState([]);
+  const [poster, setPoster] = useState("");
+  const [nome, setNome] = useState();
+  const [cpf, setCpf] = useState();
+  const {setData, data} = props;
+  const [assentos,setAssentos] = useState([]);
+  const { idSessao } = useParams();
+  const [renderizaAssentos, setRenderizaAssentos] = useState([]);
+  useEffect(() => {
+    const promise = axios.get(
+      `https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`
+    );
+    promise.then((response) => {
+      const assentosData = response.data.seats;
+      const dia = response.data.day.weekday;
+      const diaMes = response.data.day.date;
+      const hora = response.data.name;
+      const titulo = response.data.movie.title;
+      const poster =  response.data.movie.posterURL
+      setData({...data,diaMes:diaMes})
+      setTitulo(titulo);
+      setPoster(poster)
+      setDia(dia);
+      setHora(hora);
+      setRenderizaAssentos(assentosData);
+    });
+  }, []);
+  function validaDados(event) {
     event.preventDefault()
-    console.log ({
-      assentos:assentos,
-      nome:nome,
-      cpf:cpf
-    })
-  }
+    if(assentos.length===0){
+      alert("Faltou os assentos!")
+    } else {
+      setData({...data,numeros:numeros,dia:dia,hora:hora,nome:nome,cpf:cpf});
+      const reserva = {
+        ids:assentos,
+        nome:nome,
+        cpf:cpf
+      }
+      const promise = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many",reserva);
+      promise.then(
+        navigate("/sucesso")
+      )
+      }
+    }
   return (
     <Main>
-      <form onSubmit={enviarDados}>
-      <RenderizaAssentos setAssentos={setAssentos} assentos={assentos}/>
+      <form onSubmit={validaDados}>
+      <SectionAssentos>
+      {renderizaAssentos.map((props, index) => (
+        <AssentoFunction seat={props} key={index} setAssentos={setAssentos} setNumeros={setNumeros} />
+      ))}
+    </SectionAssentos>
       <SectionDetails>
         <AssentoDetailSelecionado>
           <h3>Selecionado</h3>
@@ -43,10 +87,20 @@ function Assentos() {
         </button>
       </SectionReservar>
       </form>
-      <Footer />
+      <Footer titulo={titulo} hora={hora} dia={dia} poster={poster}/>
     </Main>
   );
 }
+const SectionAssentos = styled.section`
+  box-sizing: content-box;
+  min-height: 203px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+`;
 
 const AssentoDetailSelecionado = styled.div`
   background: #8dd7cf;
@@ -162,5 +216,4 @@ const SectionReservar = styled.section`
     color: #ffffff;
   }
 `;
-
 export default Assentos;

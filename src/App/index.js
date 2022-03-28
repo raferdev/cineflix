@@ -6,15 +6,25 @@ import Sucesso from "./components/sucesso";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 function App() {
-const [data, setData] = useState([])
+const [data, setData] = useState({
+  filme:"",
+  dia:"",
+  diaSemana:"",
+  assentos:"",
+  agendar:{
+    ids:[],
+    nome:"",
+    cpf:""
+  }
+})
   return (
     <>
       <Header />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/sessao/:idFilme" element={<Sessao/>} />
-          <Route path="/assentos/:idSessao" element={<Assentos setData={setData}/>} />
+          <Route path="/sessao/:idFilme" element={<Sessao setData={setData}/>} data={data} />
+          <Route path="/assentos/:idSessao" element={<Assentos data={data} setData={setData}/>} />
           <Route path="/sucesso" element={<Sucesso data={data}/>}/>
         </Routes>
       </BrowserRouter>

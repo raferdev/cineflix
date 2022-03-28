@@ -1,19 +1,33 @@
 import styled from "styled-components";
 export default function AssentoFunction(props) {
-  const { seat,setAssentos } = props;
+  const { seat,setAssentos, setNumeros } = props;
+  function selecionado() {
+    setNumeros((numeros) =>{
+      const array = [...numeros]
+      const index = array.indexOf(seat.name);
+      if (index === -1) {
+          return [...numeros,seat.name];
+      } else {
+          array.splice(index, 1);
+          return [...array]
+      }
+  })
+    setAssentos((assentos) =>{
+      const array = [...assentos]
+      const index = array.indexOf(seat.id);
+      if (index === -1) {
+          return [...assentos,seat.id];
+      } else {
+          array.splice(index, 1);
+          return [...array]
+      }
+  })
+    
+  }
   if (seat.isAvailable) {
     return (
       <>
-        <Input name={seat.id} type="checkbox" id={"user" + seat.name} onChange={()=> setAssentos((assentos) =>{
-    const array = [...assentos]
-    const index = array.indexOf(seat.id);
-    if (index === -1) {
-        return [...assentos,seat.id];
-    } else {
-        array.splice(index, 1);
-        return [...array]
-    }
-})}/>
+        <Input name={seat.id} type="checkbox" id={"user" + seat.name} onChange={selecionado}/>
         <Label type="checkbox" htmlFor={"user" + seat.name} value={seat.id}>
           {seat.name}
         </Label>
