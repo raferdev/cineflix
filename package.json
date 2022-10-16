@@ -2,7 +2,7 @@
   "name": "cineflix",
   "version": "1.1.0",
   "private": true,
-  "description": "This is a web project to improve fast learning with flashcards build in ReactJS.",
+  "description": "Site to reserve seats of your prefeer movie.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/raferdev/cineflix.git"
@@ -11,8 +11,9 @@
     "ReactJS",
     "Html",
     "CSS",
-    "Flashcards",
-    "frontend"
+    "Reservation",
+    "Frontend",
+    "Movies"
   ],
   "author": "raferdev@outlook.com",
   "license": "MIT",
