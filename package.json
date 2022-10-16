@@ -1,7 +1,24 @@
 {
-  "name": "projeto9-cineflex",
-  "version": "0.1.0",
+  "name": "cineflix",
+  "version": "1.1.0",
   "private": true,
+  "description": "This is a web project to improve fast learning with flashcards build in ReactJS.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raferdev/cineflix.git"
+  },
+  "keywords": [
+    "ReactJS",
+    "Html",
+    "CSS",
+    "Flashcards",
+    "frontend"
+  ],
+  "author": "raferdev@outlook.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/raferdev/cineflix/issues"
+  },
   "dependencies": {
     "axios": "^0.26.1",
     "react": "^17.0.2",
