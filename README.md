@@ -19,8 +19,6 @@
 <img src="./readme-banner.png">
 
 ---
-<p align="center"> This project is 
-</p>
 
 ## 📝 Table of Contents
 
