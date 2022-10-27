@@ -3,7 +3,7 @@
  <img width=200px height=200px src="./readme.png" alt="Project logo"></a>
 </p>
 
-<h3 align="center">Zaprecall</h3>
+<h3 align="center">Cineflix</h3>
 
 <div align="center">
 
